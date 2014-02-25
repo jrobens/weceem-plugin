@@ -17,13 +17,13 @@ grails.project.dependency.resolution = {
         mavenCentral() // need this to resolve junit 3.8.1 (with grails 2.2.1+)
     }
 
-    def gebVersion = "0.9.0-RC-1"
-    def seleniumVersion = "2.26.0"
+ //  def gebVersion = "0.9.0-RC-1"
+ //   def seleniumVersion = "2.26.0"
 
     dependencies {
         // Workarounds for Grails 1.2 not shipping ant in WAR
-        compile 'org.apache.ant:ant:1.7.1'
-        compile 'org.apache.ant:ant-launcher:1.7.1'
+        //compile 'org.apache.ant:ant:1.7.1'
+        //compile 'org.apache.ant:ant-launcher:1.7.1'
 
         // Our specific dependencies
         compile 'net.java.dev.textile-j:textile-j:2.2.864'
@@ -43,7 +43,7 @@ grails.project.dependency.resolution = {
 
 	plugins {
         // plugins for the build system only
-        build ":tomcat:7.0.47"
+      //  build ":tomcat:7.0.47"
         build (":release:3.0.1") {
             export = false
         }
@@ -52,7 +52,7 @@ grails.project.dependency.resolution = {
         compile ':cache:1.1.1'
 
         // plugins needed at runtime but not for compilation
-        runtime ":hibernate:3.6.10.6" // or ":hibernate4:4.1.11.2"
+      //  runtime ":hibernate:3.6.10.6" // or ":hibernate4:4.1.11.2"
         runtime ":database-migration:1.3.8"
 
         compile ":bean-fields:1.0" // consider replacing with the fields plugin or even with the new Platform UI
@@ -68,12 +68,15 @@ grails.project.dependency.resolution = {
             export = false
         }
 
-        compile ":jquery:1.8.3"
-        compile ":jquery-ui:1.8.24"
         compile ":navigation:1.3.2"
+        compile ":taggable:1.0.1"
+        compile ":quartz:1.0-RC7"
+
+        /*compile ":jquery:1.8.3"
+        compile ":jquery-ui:1.8.24"
         compile ":quartz:1.0-RC7"
         compile ":searchable:0.6.6"
-        compile ":taggable:1.0.1"
+        */
 
         // For serlvet filter ordering
         provided ":webxml:1.4.1"

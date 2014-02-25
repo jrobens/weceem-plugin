@@ -1,5 +1,7 @@
 package org.weceem.controllers
 
+import org.springframework.security.access.annotation.Secured
+
 /**
  * @author Sergei Shushkevich
  */
@@ -7,7 +9,8 @@ class WcmPortalController {
 
     static defaultAction = 'content'
 
-    def content = { 
+    @Secured(['ROLE_ADMIN'])
+    def content() {
         redirect(controller:'wcmRepository', action:'treeTable')
     }
     

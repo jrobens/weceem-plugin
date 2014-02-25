@@ -16,7 +16,7 @@ class WcmImportExportService {
     
     def importSpace(WcmSpace space, String importerName, File file) throws ImportException {
         // @todo couldn't inject this service, circular dependency problem. Investigate
-        searchableService.stopMirroring()
+      //  searchableService.stopMirroring()
         
         try {
             WcmContent.withTransaction { txn ->
@@ -34,10 +34,12 @@ class WcmImportExportService {
                 }
             }
         } finally {
-            searchableService.startMirroring()
+            // searchableService.startMirroring()
         }
-        // Rebuild indexes
-        searchableService.reindex()
+        // Rebuild indexes if the searchable plugin is installed.
+        if (searchableService) {
+            searchableService.reindex()
+        }
     }
 
     def exportSpace(WcmSpace space, String exporterName) {

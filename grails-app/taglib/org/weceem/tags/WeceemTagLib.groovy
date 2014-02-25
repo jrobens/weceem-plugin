@@ -638,14 +638,14 @@ class WeceemTagLib {
     }
     
     def loggedInUserName = { attrs ->
-        def u = wcmSecurityService.userName
+        def u = wcmSecurityService?.userName  ? wcmSecurityService?.userName : "unkwown"
         if (u) {
             out << u.encodeAsHTML()
         }
     }
     
     def loggedInUserEmail = { attrs ->
-        def u = wcmSecurityService.userEmail
+        def u = wcmSecurityService?.userEmail  ? wcmSecurityService?.userEmail : "unknown"
         if (u) {
             out << u.encodeAsHTML()
         }

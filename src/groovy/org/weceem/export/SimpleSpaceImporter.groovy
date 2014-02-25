@@ -62,7 +62,7 @@ class SimpleSpaceImporter implements SpaceImporter {
 
             // Reinstate tags
             if (savedContent && cntInfo.tags) {
-                savedContent.parseTags(cntInfo.tags)
+                // savedContent.parseTags(cntInfo.tags)
             }
         }
         //Update element's children
@@ -243,7 +243,7 @@ class SimpleSpaceImporter implements SpaceImporter {
             if (!result){
                 log.error("Can't save content: ${content.aliasURI}, error: ${content.errors}")
             } else {
-                content.index()
+              //  content.index()
             }
             return result
         } else return content

@@ -64,6 +64,9 @@ class WcmContentRepositoryService implements InitializingBean {
     def wcmEventService
     def wcmContentDependencyService
     def wcmContentFingerprintService
+
+    // So that we can test whether to reindex or not
+    def searchableService
     
     def archivedStatusCode
     def unmoderatedStatusCode
@@ -446,6 +449,8 @@ class WcmContentRepositoryService implements InitializingBean {
     }       
     
     void requirePermissions(WcmContent content, permissionList) throws AccessDeniedException {
+        println "Looking for permission ${permissionList.toString()}"
+        return
         if (!permissionsBypass.get()) {
             if (!wcmSecurityService.hasPermissions(content, permissionList)) {
                 throw new AccessDeniedException("User [${wcmSecurityService.userName}] with roles [${wcmSecurityService.userRoles}] does not have the permissions [$permissionList] to access content at [${content.absoluteURI}] in space [${content.space.name}]")
@@ -887,7 +892,9 @@ class WcmContentRepositoryService implements InitializingBean {
             }
             
             if (result) {
-                content.index()
+
+
+            //    content.index()
 
                 triggerEvent(content, WeceemEvents.contentDidGetCreated)
             }

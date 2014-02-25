@@ -14,7 +14,8 @@
 
 package org.weceem.content
 
-import org.grails.taggable.*
+//import org.grails.taggable.*
+
 
 /**
  * WcmContent class describes the content information.

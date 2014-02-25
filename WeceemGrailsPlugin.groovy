@@ -109,7 +109,8 @@ class WeceemGrailsPlugin {
 
         _log.info "Weceem plugin running with data source ${applicationContext.dataSource.dump()}"
         _log.info "Weceem plugin running with grails configuration ${applicationContext.grailsApplication.config}"
-        
+
+        /*
         applicationContext.navigationService.registerItem( 'weceem', 
             [controller:'wcmRepository', action:'treeTable', title:'content', path:'contentrepo', order:0])
 
@@ -125,6 +126,8 @@ class WeceemGrailsPlugin {
             [controller:'wcmPortal', action:'comingsoon', title:'linkcheck', path:'admin/linkchecker', order: 4] ].each { item ->
                 applicationContext.navigationService.registerItem( 'weceem.plugin.admin', item)
         }
+*/
+
 
         def repSvc = applicationContext.wcmContentRepositoryService
         repSvc.loadConfig()

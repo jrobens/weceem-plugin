@@ -13,12 +13,6 @@
  */
 package org.weceem.tags
 
-import org.weceem.content.*
-import grails.util.GrailsUtil
-import org.weceem.security.AccessDeniedException
-
-import org.weceem.controllers.WcmContentController
-import org.weceem.content.RenderEngine
 
 /**
  * Tags for apps that embed local weceem content
@@ -27,8 +21,8 @@ class EmbedTagLib {
 
     static namespace = "wcm"
     
-    def wcmRenderEngine
-    def wcmContentRepositoryService
+    static wcmRenderEngine
+    static wcmContentRepositoryService
     
     def render = { attrs ->
         def path = attrs.path

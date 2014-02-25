@@ -67,7 +67,9 @@ $( function() {
                 <div id="editor-${gn.encodeAsHTML()}" class="editorpanel">
                     <g:grep in="${editableProperties}" var="prop" filter="${ { p -> p.group == gn} }">
                         <div class="clear prepend-1 span-4">
+                            <% try  { %>
                             <bean:label beanName="content" property="${prop.property}" labelKey="${'content.label.'+prop.property}"/>
+                            <%  } catch(e) {} %>
                         </div>
                         <div class="field prepend-1 span-17 last">
                             <% println wcm."editorField${prop.editor}"(bean:content, property:prop.property) %>

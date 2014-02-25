@@ -55,13 +55,25 @@ class EditorFieldTagLib {
     }
 
     def editorFieldTags = { attrs ->
-        out << g.render(template:'/editors/tags', plugin:'weceem', 
-            model:[name:attrs.property, value:pageScope.content[attrs.property]])
+        try {
+            out << g.render(template:'/editors/tags', plugin:'weceem',
+                    model:[name:attrs.property, value:pageScope.content[attrs.property]])
+        } catch (e) {
+            log.warn "Failed to render editorFieldTags ${e.getMessage()}"
+            out << ""
+        }
+
     }
 
     def editorResourcesTags = { attrs ->
-        out << g.render(template:'/editors/tags_resources', plugin:'weceem', 
-            model:[name:attrs.property, value:pageScope.content[attrs.property]])
+        try {
+            out << g.render(template:'/editors/tags_resources', plugin:'weceem',
+                    model:[name:attrs.property, value:pageScope.content[attrs.property]])
+        } catch (MissingPropertyException mpe) {
+            log.info "Missing property ${attrs.property}"
+            out << ""
+        }
+
     }
 
     def editorFieldReadOnly = { attrs ->
